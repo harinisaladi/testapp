@@ -1,9 +1,6 @@
 set :stages, ["staging"]
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
-require "bundler/capistrano"
-require "rvm/capistrano"
-before "deploy:assets:precompile", "bundle:install"
 
 set :application, "testapp"
 set :repository,  "git@github.com:harinisaladi/testapp.git"
@@ -13,9 +10,9 @@ set :repository,  "git@github.com:harinisaladi/testapp.git"
 set :scm, :git 
 set :use_sudo, false
 
-set :user "ec2-user"
+set :user, "ec2-user"
 set :deploy_to, "/var/www/testapp"
-desc "check production task"
+desc "check staging task"
 
 task :check_staging do
   if stage.to_s == "staging"
