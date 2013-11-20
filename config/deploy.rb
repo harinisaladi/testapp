@@ -1,6 +1,9 @@
 set :stages, ["staging"]
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
+require "bundler/capistrano"
+require "rvm/capistrano"
+before "deploy:assets:precompile", "bundle:install"
 
 set :application, "testapp"
 set :repository,  "git@github.com:harinisaladi/testapp.git"

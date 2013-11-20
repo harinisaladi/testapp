@@ -20,6 +20,8 @@ group :development do
   gem 'capistrano', '2.15.5'
   gem 'capistrano-ext'
 end
+gem 'rvm-capistrano'
+
 group :production do
   gem 'thin'
 end
