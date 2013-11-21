@@ -12,8 +12,9 @@ set :branch, "master"
 
 set :user, "ec2-user"
 set :deploy_to, 'var/www/testapp'
-set :deploy_via, :remote_cache
+set :deploy_via, :copy
 
+set :rails_env, "staging"
 desc "check staging task"
 
 task :check_staging do
