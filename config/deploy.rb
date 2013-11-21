@@ -8,9 +8,12 @@ set :repository,  "git@github.com:harinisaladi/testapp.git"
 # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :scm, :git 
+set :branch, "master"
 
 set :user, "ec2-user"
-set :deploy_to, "/var/www/testapp"
+set :deploy_to, 'var/www/testapp'
+set :deploy_via, :remote_cache
+
 desc "check staging task"
 
 task :check_staging do
@@ -18,7 +21,7 @@ task :check_staging do
     puts " \n Are you REALLY sure you want to deploy to staging?"
     puts " \n Enter the password to continue\n "
     password = STDIN.gets[0..7] rescue nil
-    if password != 'stagingpassword'
+    if password != 'mypasswd'
       puts "\n !!! WRONG PASSWORD !!!"
       exit
     end
